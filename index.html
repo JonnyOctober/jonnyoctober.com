@@ -289,6 +289,82 @@
     text-transform: uppercase;
   }
 
+  /* ---- KID TRACKS ---- */
+  .kid-tracks {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+  }
+  .kid-track {
+    text-decoration: none;
+    color: var(--ink);
+    display: block;
+    transition: transform 0.35s ease;
+  }
+  a.kid-track:hover { transform: translateY(-3px); }
+  .kid-thumb {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background-size: cover;
+    background-position: center;
+    background-color: #1a1a1c;
+    border: 1px solid var(--line);
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.35s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  a.kid-track:hover .kid-thumb { border-color: var(--accent); }
+  .kid-thumb-placeholder {
+    background: linear-gradient(135deg, #15151c 0%, #1f1f28 100%);
+  }
+  .kid-thumb-placeholder::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(90deg, transparent 0 14px, rgba(232,228,220,0.06) 14px 15px);
+    mask-image: linear-gradient(180deg, transparent 0%, #000 30%, #000 70%, transparent 100%);
+    -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 30%, #000 70%, transparent 100%);
+  }
+  .kid-tag {
+    position: relative;
+    z-index: 1;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ink);
+    border: 1px solid var(--line);
+    padding: 7px 14px;
+    background: rgba(10,10,12,0.6);
+    backdrop-filter: blur(2px);
+  }
+  .kid-title {
+    font-family: 'Anton', sans-serif;
+    font-weight: 400;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    margin-top: 14px;
+    line-height: 1.15;
+    transition: color 0.3s ease;
+  }
+  a.kid-track:hover .kid-title { color: var(--accent); }
+  .kid-desc {
+    font-size: 0.7rem;
+    color: var(--dim);
+    letter-spacing: 0.12em;
+    margin-top: 4px;
+    text-transform: uppercase;
+  }
+  .kid-audio {
+    width: 100%;
+    margin-top: 10px;
+    height: 36px;
+  }
+
   /* ---- COLLAB note ---- */
   .note {
     font-size: 0.85rem;
@@ -333,6 +409,7 @@
     .release { grid-template-columns: 48px 1fr; }
     .release .meta { display: none; }
     .videos { grid-template-columns: 1fr; gap: 28px; }
+    .kid-tracks { grid-template-columns: 1fr; }
     header { min-height: 70vh; }
   }
 </style>
@@ -424,6 +501,25 @@
         <div class="video-title">In the Tall Grass</div>
         <div class="video-desc">Cinematic / Sci-Fi</div>
       </a>
+    </div>
+  </section>
+
+  <section id="kids">
+    <div class="sec-label">For the Kids</div>
+    <div class="kid-tracks">
+      <a class="kid-track" href="https://www.youtube.com/watch?v=E6CUqPtBnRU" target="_blank" rel="noopener">
+        <div class="kid-thumb" style="background-image: url('https://img.youtube.com/vi/E6CUqPtBnRU/maxresdefault.jpg');"></div>
+        <div class="kid-title">The Ballad of Lil' Sophie</div>
+        <div class="kid-desc">Music Video</div>
+      </a>
+      <div class="kid-track">
+        <div class="kid-thumb kid-thumb-placeholder">
+          <span class="kid-tag">Web Exclusive</span>
+        </div>
+        <div class="kid-title">Happy Homie</div>
+        <div class="kid-desc">Press Play</div>
+        <audio class="kid-audio" controls preload="metadata" src="/audio/happy-homie.mp3"></audio>
+      </div>
     </div>
   </section>
 
